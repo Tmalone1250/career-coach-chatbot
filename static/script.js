@@ -298,12 +298,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function truncateText(text, maxLength) {
-        if (!text) return '';
-        if (text.length <= maxLength) return text;
-        return text.substr(0, maxLength) + '...';
-    }
-
     function displayJobs(jobs) {
         const jobsContainer = document.getElementById('jobResults');
         jobsContainer.innerHTML = ''; // Clear previous results
@@ -335,9 +329,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }).join('');
             }
 
-            const truncatedDescription = truncateText(job.description, 150);
-            const hasFullDescription = job.description && job.description.length > 150;
-
             jobCard.innerHTML = `
                 <h3 class="job-title">${job.title}</h3>
                 <div class="job-company">${job.company}</div>
@@ -347,37 +338,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     <span class="job-posted">${job.posted}</span>
                 </div>
                 ${job.salary ? `<div class="job-salary">${job.salary}</div>` : ''}
-                <div class="job-description">
-                    <span class="description-text">${truncatedDescription}</span>
-                    ${hasFullDescription ? `
-                        <span class="description-full" style="display: none;">${job.description}</span>
-                        <button class="read-more-btn">Read more</button>
-                    ` : ''}
-                </div>
+                <div class="job-description">${job.description}</div>
                 ${highlightsHtml ? `<div class="job-highlights">${highlightsHtml}</div>` : ''}
                 <div class="job-actions">
                     <a href="${job.link}" target="_blank" class="job-apply-btn">View Job →</a>
                 </div>
             `;
-
-            // Add click handler for read more button
-            if (hasFullDescription) {
-                const readMoreBtn = jobCard.querySelector('.read-more-btn');
-                const descriptionText = jobCard.querySelector('.description-text');
-                const descriptionFull = jobCard.querySelector('.description-full');
-                
-                readMoreBtn.addEventListener('click', () => {
-                    if (descriptionText.style.display !== 'none') {
-                        descriptionText.style.display = 'none';
-                        descriptionFull.style.display = 'inline';
-                        readMoreBtn.textContent = 'Show less';
-                    } else {
-                        descriptionText.style.display = 'inline';
-                        descriptionFull.style.display = 'none';
-                        readMoreBtn.textContent = 'Read more';
-                    }
-                });
-            }
             
             jobsContainer.appendChild(jobCard);
         });

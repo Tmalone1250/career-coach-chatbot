@@ -592,27 +592,6 @@ select.form-input {
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
-    position: relative;
-}
-
-.description-text, .description-full {
-    display: inline;
-}
-
-.read-more-btn {
-    background: none;
-    border: none;
-    color: #3498db;
-    cursor: pointer;
-    font-size: 0.9em;
-    padding: 0;
-    margin-left: 5px;
-    text-decoration: underline;
-    transition: color 0.2s ease;
-}
-
-.read-more-btn:hover {
-    color: #2980b9;
 }
 
 .job-highlights {
