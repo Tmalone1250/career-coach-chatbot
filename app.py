@@ -587,5 +587,8 @@ Please provide:
         print(f"Traceback: {traceback.format_exc()}")  # Print full traceback
         return jsonify({"error": f"Failed to process job search request: {str(e)}"}), 500
 
+# **🚀 Render Deployment: Ensure Flask Binds to 0.0.0.0 and Uses the Correct Port**
 if __name__ == "__main__":
-    app.run(debug=True, port=10000)
+    PORT = int(os.environ.get("PORT", 10000))  # Render provides a dynamic port
+    print(f"🚀 Starting Flask app on port {PORT}")
+    app.run(host="0.0.0.0", port=PORT, debug=True)
