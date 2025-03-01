@@ -114,7 +114,7 @@ When providing interview preparation:
 def ask_openrouter(messages, max_tokens=500, temperature=0.7):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "HTTP-Referer": "http://localhost:5000",
+        "HTTP-Referer": "http://localhost:1000",
         "X-Title": "AI Career Coach",
         "Content-Type": "application/json"
     }
@@ -588,4 +588,4 @@ Please provide:
         return jsonify({"error": f"Failed to process job search request: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=1000)
