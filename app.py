@@ -588,4 +588,4 @@ Please provide:
         return jsonify({"error": f"Failed to process job search request: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=1000)
+    app.run(debug=True, port=10000)
